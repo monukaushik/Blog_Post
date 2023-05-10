@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%}
+<title>Add Page</title>
+{% endblock %}
+
+{% block logout %}
+    <li class="nav-item">
+     <a class="nav-link active" aria-current="page" href="/bloggallery/">Gallery</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/logout/">logout</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+
+<div class='container' style='margin-top:50px; display:flex; place-content:center;'>
+    <div class='main' style='width:500px; border:1px solid gray; padding:10px; border-radius:5px;'>
+      <h5 style='text-align:center;'> Add New Blog </h5>
+        <form action='' method='POST' enctype="multipart/form-data">   
+            {% csrf_token %} 
+                <div class="mb-3">
+                  <label for="title" class="form-label">Blog Title</label>
+                  <input type="text" class="form-control" name='title' placeholder='Enter blog title'>
+                </div>
+                <div class="mb-3">
+                    <label for="bimage" class="form-label">Blog Image</label>
+                    <input type="file" class="form-control" name='bimage' placeholder='Upload your image'>
+                  </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Blog Description </label>
+                  <input type="text" class="form-control" name='description' placeholder='Enter blog description'>
+                </div>  
+                <div class="mb-3">
+                    <label for="bdate" class="form-label">Uploaded Date</label>
+                    <input type="date" class="form-control" name='bdate' placeholder='Chose blog date'>
+                  </div>    
+                  <div class="mb-3">
+                    <label for="contect" class="form-label">Contect</label>
+                    <input type="tel" class="form-control" name='contect' placeholder='enter your contect'>
+                </div>               
+                <div style=''>
+                    <button type="submit" class="btn btn-primary w-100">Post</button>
+                </div>
+              </form>
+        </div>
+    </div>   
+{% endblock%}
+
+</html>

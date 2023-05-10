@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%}
+<title>bloggallary Page</title>
+{% endblock %}
+
+{% block logout %}
+     <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/profile/">Profile</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/addblog/">Add Blog</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/logout/">logout</a>
+    </li>
+{% endblock %}
+
+{% block validation%}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class='container'>
+    <div class='row' style='margin:30px;'>
+      {% for i in data %}
+      <div class='col-md-8'>
+        <h3> {{i.blogtitle}} </h3>
+        <p>{{i.blogdesc | truncatechars:200}}</p>
+        <a href='/singlepage/{{i.id}}' type='button'>Read More..</a>
+        <div>
+          <p style='font-size:18px; font-weight:bold;'>Publish Date : {{i.blogdate}}</p>
+          <p style='font-size:18px; font-weight:bold; margin-bottom:50px;'>contact      : {{i.blogcontact}}</p>
+        </div>       
+      </div>
+      <div class='col-md-4' style='margin-top:40px;'>
+        <img src="{{i.blogimage.url}}"  alt="..." width='200px' height='220px'>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock%}
+</html>
